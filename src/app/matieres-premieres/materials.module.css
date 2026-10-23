@@ -1,0 +1,600 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #eff4fb;
+}
+.heroImage {
+  object-fit: cover;
+  object-position: 72% center;
+  z-index: -2;
+}
+.heroVeil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(248, 250, 254, 0.97) 0%,
+    rgba(248, 250, 254, 0.92) 30%,
+    rgba(248, 250, 254, 0.35) 65%,
+    rgba(248, 250, 254, 0.08)
+  );
+}
+.heroInner {
+  min-height: 590px;
+  display: flex;
+  align-items: center;
+}
+.heroCopy {
+  max-width: 760px;
+  padding: 85px 0;
+  animation: arrive 0.85s ease both;
+}
+.heroCopy :global(.eyebrow) {
+  color: #50627c;
+}
+.heroCopy h1 {
+  font-size: clamp(44px, 5.6vw, 82px);
+  margin: 26px 0;
+  letter-spacing: -0.065em;
+}
+.heroCopy h1 span {
+  color: #2455ef;
+}
+.heroCopy > p {
+  max-width: 425px;
+  font-size: 16px;
+  color: #52627b;
+}
+.heroAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  min-height: 50px;
+  margin-top: 30px;
+  padding: 15px 22px;
+  background: #2455ef;
+  color: white;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.heroAction:hover {
+  background: #173db8;
+}
+.content {
+  padding-top: 70px;
+  padding-bottom: 80px;
+}
+
+.explorer {
+  scroll-margin-top: 110px;
+}
+.explorerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 35px;
+  margin-bottom: 28px;
+}
+.explorerHeader h2 {
+  font-size: clamp(38px, 4.4vw, 66px);
+  margin-top: 20px;
+}
+.explorerHeader h2 span {
+  color: #2455ef;
+}
+.explorerHeader > p {
+  max-width: 330px;
+  font-size: 14px;
+}
+.familyLinks {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 48px;
+}
+.familyLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 46px;
+  font-size: 13px;
+  color: #52627b;
+  border-bottom: 1px solid #cad5e7;
+}
+.familyLinks a:hover {
+  color: #2455ef;
+  border-color: #2455ef;
+}
+.family {
+  margin-bottom: 80px;
+  scroll-margin-top: 110px;
+  min-width: 0;
+}
+.familyHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+.familyHeader :global(.eyebrow) {
+  color: #697991;
+}
+.familyHeader h3 {
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  margin-top: 12px;
+}
+.galleryControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.galleryControls > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 14px;
+  font-size: 11px;
+  color: #697991;
+}
+.galleryControls button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #d4deed;
+  border-radius: 50%;
+  background: #fff;
+  color: #101b2e;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.galleryControls button:hover:not(:disabled) {
+  background: #2455ef;
+  color: white;
+}
+.galleryControls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.materialIndex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  margin-bottom: 16px;
+}
+.materialIndex a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  font-size: 11px;
+  color: #697991;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.25s,
+    border-color 0.25s;
+}
+.materialIndex a[aria-current="true"] {
+  color: #2455ef;
+  border-color: #2455ef;
+}
+.rail {
+  position: relative;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 5px 3px 12px;
+  cursor: grab;
+  isolation: isolate;
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+.rail[data-dragging="true"] {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+.rail:focus-visible {
+  outline: 2px solid #2455ef;
+  outline-offset: 4px;
+}
+.materialCard {
+  flex: 0 0 calc(50% - 22px);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  scroll-margin-top: 115px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f1f5fc;
+  border: 1px solid #e4eaf4;
+}
+.cardArt {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: 270px;
+  flex-shrink: 0;
+  background: #edf3fd;
+}
+.artPhoto {
+  position: absolute;
+  inset: -7%;
+  z-index: -2;
+  will-change: transform;
+  pointer-events: none;
+}
+.artImage {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+.artVeil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(238, 244, 254, 0.88),
+    rgba(238, 244, 254, 0.05) 90%
+  );
+}
+.artCode {
+  position: absolute;
+  left: 35px;
+  bottom: 18px;
+  font-size: clamp(90px, 10vw, 150px);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.085em;
+  color: #2455ef;
+}
+.artCode > span {
+  display: block;
+}
+.artCode[data-paired="true"] {
+  font-size: clamp(48px, 5vw, 75px);
+  line-height: 0.9;
+  bottom: 25px;
+}
+.artCode[data-paired="true"] > span + span {
+  margin-top: 4px;
+}
+.artCaption {
+  position: absolute;
+  right: 17px;
+  bottom: 15px;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: #52627b;
+}
+.cardCopy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px 14px;
+}
+.grade {
+  display: block;
+  font-size: 10px;
+  color: #6a7890;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.cardCopy h4 {
+  font-size: clamp(21px, 2.2vw, 29px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+}
+.cardCopy > p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.cardQuote {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 52px;
+  font-size: 12px;
+  border-top: 1px solid #d6dfed;
+  color: #2455ef;
+}
+.cardQuote svg {
+  transition: transform 0.3s;
+}
+.cardQuote:hover svg {
+  transform: translate(3px, -3px);
+}
+.family[data-tone="blue"] .materialCard {
+  background: #122544;
+  border-color: #122544;
+  color: white;
+}
+.family[data-tone="blue"] .cardArt {
+  background: #173664;
+}
+.family[data-tone="blue"] .artVeil {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 37, 73, 0.94),
+    rgba(25, 70, 155, 0.55) 60%,
+    rgba(49, 94, 184, 0.12)
+  );
+}
+.family[data-tone="blue"] .artCode {
+  color: #fff;
+}
+.family[data-tone="blue"] .artCaption {
+  color: #d3def2;
+}
+.family[data-tone="blue"] .grade {
+  color: #a1b9de;
+}
+.family[data-tone="blue"] .cardCopy > p {
+  color: #bdcde6;
+}
+.family[data-tone="blue"] .cardQuote {
+  color: #dce8ff;
+  border-color: #365074;
+}
+.railFooter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 14px;
+  color: #667b98;
+  font-size: 10px;
+}
+.railFooter > span:first-child {
+  color: #2455ef;
+  min-width: 90px;
+}
+.progress {
+  flex: 1;
+  height: 2px;
+  background: #e3e9f3;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #2455ef;
+  transform: scaleX(0.1);
+  transform-origin: left;
+}
+@media (hover: hover) and (pointer: fine) {
+  .materialCard:hover .artImage {
+    transform: scale(1.06);
+  }
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1000px) {
+  .cardArt {
+    height: 235px;
+  }
+  .cardCopy {
+    padding: 24px 22px 12px;
+  }
+  .galleryControls > span {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .heroInner {
+    min-height: 420px;
+  }
+  .heroCopy {
+    padding: 48px 0 70px;
+  }
+  .heroCopy h1 {
+    font-size: clamp(39px, 7vw, 58px);
+  }
+  .heroCopy > p {
+    max-width: 350px;
+    font-size: 14px;
+  }
+  .heroVeil {
+    background: linear-gradient(
+      90deg,
+      rgba(248, 250, 254, 0.95),
+      rgba(248, 250, 254, 0.78) 50%,
+      rgba(248, 250, 254, 0.3)
+    );
+  }
+  .content {
+    padding-top: 40px;
+    padding-bottom: 45px;
+  }
+  .explorerHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .explorerHeader h2 {
+    font-size: clamp(35px, 6vw, 48px);
+    margin-top: 15px;
+  }
+  .explorerHeader > p {
+    max-width: 420px;
+    font-size: 13px;
+  }
+  .familyLinks {
+    margin-bottom: 35px;
+  }
+  .family {
+    margin-bottom: 50px;
+  }
+  .familyHeader {
+    align-items: center;
+    gap: 16px;
+  }
+  .familyHeader h3 {
+    font-size: 27px;
+    max-width: 240px;
+  }
+  .galleryControls button {
+    width: 44px;
+    height: 44px;
+  }
+  .materialIndex {
+    gap: 0 14px;
+    margin-bottom: 12px;
+  }
+  .materialIndex a {
+    font-size: 10px;
+  }
+  .rail {
+    gap: 14px;
+  }
+  .materialCard {
+    flex-basis: 88%;
+    border-radius: 10px;
+  }
+  .cardArt {
+    height: 200px;
+  }
+  .artCode {
+    font-size: 116px;
+    left: 25px;
+    bottom: 16px;
+  }
+  .artCode[data-paired="true"] {
+    font-size: 62px;
+    bottom: 22px;
+  }
+  .cardCopy {
+    padding: 23px 23px 10px;
+  }
+  .cardCopy h4 {
+    font-size: 25px;
+  }
+  .cardCopy > p {
+    font-size: 13px;
+  }
+  .grade {
+    font-size: 10px;
+  }
+  .railFooter {
+    gap: 14px;
+  }
+  .railFooter > span:first-child {
+    min-width: 75px;
+  }
+}
+@media (max-width: 480px) {
+  .heroInner {
+    min-height: 400px;
+    align-items: flex-start;
+  }
+  .heroCopy {
+    padding: 36px 0 65px;
+  }
+  .heroCopy h1 {
+    font-size: clamp(34px, 8.5vw, 42px);
+    margin: 20px 0;
+  }
+  .heroCopy > p {
+    max-width: 285px;
+    font-size: 14px;
+  }
+  .heroCopy :global(.eyebrow) {
+    font-size: 9px;
+  }
+  .heroImage {
+    object-position: 70% bottom;
+  }
+  .heroVeil {
+    background: linear-gradient(
+      180deg,
+      rgba(248, 250, 254, 0.98),
+      rgba(248, 250, 254, 0.92) 30%,
+      rgba(248, 250, 254, 0.64) 62%,
+      rgba(248, 250, 254, 0.04)
+    );
+  }
+  .heroAction {
+    margin-top: 24px;
+  }
+  .familyHeader {
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .familyHeader h3 {
+    font-size: 25px;
+    max-width: 180px;
+  }
+  .familyHeader :global(.eyebrow) {
+    font-size: 8px;
+  }
+  .galleryControls {
+    gap: 5px;
+  }
+  .galleryControls button {
+    width: 44px;
+    height: 44px;
+  }
+  .cardArt {
+    height: 175px;
+  }
+  .artCode {
+    font-size: 100px;
+    left: 20px;
+  }
+  .artCode[data-paired="true"] {
+    font-size: 52px;
+  }
+  .cardCopy {
+    padding: 20px 20px 8px;
+  }
+  .cardCopy h4 {
+    font-size: 22px;
+  }
+  .cardCopy > p {
+    font-size: 13px;
+  }
+  .artCaption {
+    font-size: 7px;
+    right: 12px;
+  }
+  .cardQuote {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy {
+    animation: none;
+  }
+  .heroAction,
+  .artImage,
+  .cardQuote svg,
+  .materialIndex a,
+  .galleryControls button {
+    transition: none;
+  }
+}

@@ -1,0 +1,276 @@
+.page {
+  background: #edf2f9;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101f39;
+  color: #fff;
+}
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+}
+.heroImage {
+  object-fit: cover;
+  object-position: var(--hero-focal);
+}
+.heroVeil {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 21, 43, 0.97),
+      rgba(8, 21, 43, 0.83) 48%,
+      rgba(8, 21, 43, 0.3)
+    ),
+    linear-gradient(0deg, rgba(8, 21, 43, 0.4), transparent 50%);
+}
+.heroInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 550px;
+}
+.heroCopy {
+  max-width: 790px;
+  padding: 75px 0 90px;
+}
+.heroCopy > :global(.eyebrow) {
+  color: #d4e0f6;
+  animation: rise 0.8s 0.1s both;
+}
+.heroCopy h1 {
+  font-size: clamp(44px, 5.8vw, 80px);
+  line-height: 1.04;
+  letter-spacing: -0.06em;
+  margin: 25px 0;
+  animation: rise 1s 0.18s both;
+}
+.heroCopy h1 span {
+  display: block;
+  color: #b9ceff;
+}
+.heroCopy > p {
+  font-size: 15px;
+  max-width: 590px;
+  color: #d7e1f3;
+  animation: rise 1s 0.27s both;
+}
+.heroAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+  min-height: 50px;
+  padding: 14px 20px;
+  border: 1px solid #a5bbdf;
+  background: rgba(203, 221, 255, 0.08);
+  color: #fff;
+  font-size: 12px;
+  margin-top: 27px;
+  transition:
+    background 0.25s,
+    border-color 0.25s;
+  animation: rise 1s 0.36s both;
+}
+.heroAction:hover {
+  background: #2455ef;
+  border-color: #2455ef;
+}
+.heroAction:focus-visible {
+  outline-color: #fff;
+}
+.caption {
+  position: absolute;
+  right: 4.5%;
+  bottom: 25px;
+  color: #dce7fb;
+  background: rgba(8, 21, 43, 0.75);
+  padding: 8px 12px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.field {
+  position: relative;
+  isolation: isolate;
+  scroll-margin-top: 100px;
+  padding-top: 48px;
+  background:
+    radial-gradient(
+      ellipse at 95% 12%,
+      rgba(95, 142, 237, 0.13),
+      transparent 55%
+    ),
+    linear-gradient(160deg, #edf2fa, #f7f9fc 45%, #e9f0fa);
+}
+.field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(71, 105, 164, 0.04) 0 1px,
+    transparent 1px 120px
+  );
+  mask-image: linear-gradient(#000, transparent 85%);
+}
+.page[data-theme="machines"] .heroInner {
+  min-height: 490px;
+}
+.page[data-theme="applications"] .field {
+  background:
+    radial-gradient(
+      ellipse at 8% 15%,
+      rgba(108, 148, 228, 0.14),
+      transparent 55%
+    ),
+    linear-gradient(170deg, #eef3fb, #e4edf9 60%, #f4f7fc);
+}
+.page[data-theme="applications"] .field::before {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(71, 105, 164, 0.035) 0 1px,
+    transparent 1px 120px
+  );
+}
+.page[data-theme="applications"] :global(.application-row) {
+  gap: 6%;
+  padding: 28px;
+  margin-bottom: 38px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(194, 209, 233, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 15px 45px rgba(33, 61, 105, 0.035);
+}
+.page[data-theme="applications"] :global(.application-image) {
+  border-radius: 6px;
+}
+.page[data-theme="applications"]
+  :global(.application-row):nth-child(even)
+  > :first-child {
+  order: 1;
+}
+.page[data-theme="expertise"] :global(.approach-explorer) {
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 800px) {
+  .heroInner,
+  .page[data-theme="machines"] .heroInner {
+    min-height: 430px;
+  }
+  .heroCopy {
+    max-width: 650px;
+    padding: 46px 0 76px;
+  }
+  .heroCopy h1 {
+    font-size: clamp(37px, 6.3vw, 55px);
+    margin: 22px 0;
+  }
+  .heroCopy > p {
+    font-size: 14px;
+    max-width: 490px;
+  }
+  .heroImage {
+    object-position: var(--hero-mobile-focal);
+  }
+  .heroVeil {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 21, 43, 0.92),
+      rgba(8, 21, 43, 0.82) 72%,
+      rgba(8, 21, 43, 0.72)
+    );
+  }
+  .heroAction {
+    margin-top: 23px;
+  }
+  .caption {
+    font-size: 9px;
+    right: 5%;
+    bottom: 18px;
+  }
+  .field {
+    padding-top: 30px;
+  }
+  .page[data-theme="machines"] :global(.page-content) {
+    padding-bottom: 40px;
+  }
+  .page[data-theme="applications"] :global(.application-row) {
+    padding: 20px;
+    gap: 25px;
+    margin-bottom: 26px;
+  }
+  .page[data-theme="applications"]
+    :global(.application-row):nth-child(even)
+    > :first-child {
+    order: 0;
+  }
+  .page[data-theme="expertise"] :global(.approach-explorer) {
+    padding: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .heroInner {
+    min-height: 445px;
+  }
+  .page[data-theme="machines"] .heroInner {
+    min-height: 385px;
+  }
+  .heroCopy {
+    padding: 36px 0 74px;
+  }
+  .heroCopy h1 {
+    font-size: clamp(33px, 8.5vw, 41px);
+  }
+  .heroCopy > p {
+    font-size: 13px;
+  }
+  .heroCopy > :global(.eyebrow) {
+    font-size: 9px;
+  }
+  .heroAction {
+    padding: 12px 17px;
+    min-height: 46px;
+  }
+  .page[data-theme="applications"] :global(.application-row) {
+    padding: 16px;
+  }
+  .page[data-theme="applications"] :global(.application-row h2) {
+    font-size: 31px;
+  }
+  .page[data-theme="expertise"] :global(.approach-explorer) {
+    padding: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy > :global(.eyebrow),
+  .heroCopy h1,
+  .heroCopy > p,
+  .heroAction {
+    animation: none;
+  }
+  .heroAction {
+    transition: none;
+  }
+}

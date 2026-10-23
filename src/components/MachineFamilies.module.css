@@ -1,0 +1,265 @@
+.families {
+  display: flex;
+  gap: 12px;
+  min-height: 510px;
+  width: 100%;
+}
+.panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #101b2e;
+  color: white;
+  transition: flex 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.panel[data-active="true"] {
+  flex: 2.6;
+}
+.photo {
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.panel[data-active="true"] .photo {
+  transform: scale(1.035);
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    0deg,
+    rgba(5, 15, 30, 0.96),
+    rgba(5, 15, 30, 0.16) 75%
+  );
+}
+.content {
+  position: absolute;
+  z-index: 2;
+  bottom: 30px;
+  left: 25px;
+  right: 25px;
+}
+.content h3 {
+  margin: 0;
+}
+.content button,
+.titleLink {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: none;
+  color: white;
+  text-align: left;
+  padding: 0;
+  font-size: clamp(20px, 2vw, 29px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  cursor: pointer;
+}
+.content button svg,
+.titleLink svg {
+  flex-shrink: 0;
+  transition: transform 0.4s;
+}
+.panel[data-active="true"] button svg {
+  transform: rotate(45deg);
+}
+.details {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.65s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.45s,
+    margin 0.45s;
+}
+.panel[data-active="true"] .details {
+  max-height: 180px;
+  opacity: 1;
+  margin-top: 18px;
+}
+.details p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #dae4f5;
+  max-width: 300px;
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+  justify-self: start;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 12px 0 7px;
+  margin-top: 12px;
+  border-bottom: 1px solid #9cb2d5;
+  white-space: nowrap;
+}
+.link:hover {
+  border-color: #fff;
+}
+@media (max-width: 1000px) {
+  .families {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    min-height: 0;
+  }
+  .panel {
+    min-height: 340px;
+  }
+  .content {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+  .content button,
+  .titleLink {
+    font-size: 26px;
+  }
+  .details,
+  .panel[data-active="true"] .details {
+    display: block;
+    max-height: none;
+    opacity: 1;
+    margin-top: 16px;
+  }
+  .details p {
+    font-size: 11px;
+  }
+  .details[inert] {
+    visibility: visible;
+  }
+  .panel .photo {
+    transform: none;
+  }
+}
+@media (max-width: 650px) {
+  .families {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .panel {
+    min-height: 340px;
+  }
+  .content button,
+  .titleLink {
+    font-size: 29px;
+  }
+  .details p {
+    font-size: 12px;
+  }
+  .link {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .photo,
+  .details,
+  .content button svg {
+    transition: none;
+  }
+}
+
+.content button span,
+.titleLink span {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.panel:focus-within .details {
+  max-height: 180px;
+  opacity: 1;
+  margin-top: 18px;
+}
+.explorer {
+  min-width: 0;
+}
+.swipeToolbar {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .swipeToolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .swipeToolbar > span {
+    font-size: 11px;
+    color: #66758a;
+  }
+  .swipeToolbar > div {
+    display: flex;
+    gap: 7px;
+  }
+  .swipeToolbar button {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #d7dfeb;
+    background: white;
+    color: #101b2e;
+    border-radius: 4px;
+  }
+  .swipeToolbar button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .families {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: min(70vw, 390px);
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    padding-bottom: 16px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #91a9d5 #edf1f7;
+  }
+  .panel {
+    min-height: 315px;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+  .content {
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+  }
+  .content button,
+  .titleLink {
+    font-size: 26px;
+  }
+}
+@media (max-width: 650px) {
+  .families {
+    grid-auto-columns: 85%;
+    gap: 16px;
+  }
+  .panel {
+    min-height: 300px;
+  }
+  .content button,
+  .titleLink {
+    font-size: 27px;
+  }
+  .details p {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,22 @@
+.credits section {
+  max-width: 850px;
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+}
+.credits h2 {
+  margin-bottom: 16px;
+  font-size: clamp(23px, 3vw, 30px);
+  letter-spacing: -0.035em;
+}
+.credits p {
+  max-width: 740px;
+  font-size: 14px;
+}
+.credits p + p {
+  margin-top: 12px;
+}
+.credits a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
